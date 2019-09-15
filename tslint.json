@@ -8,6 +8,10 @@
     ]
   },
   "rules": {
-    "no-console": false
+    "no-console": false,
+    "no-empty-interface": false,
+    "interface-name": false,
+    "ordered-imports": false,
+    "experimentalDecorators": true
 }
 }

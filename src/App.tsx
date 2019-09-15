@@ -1,29 +1,30 @@
 import * as React from 'react';
 import './App.css';
+import { appState } from "src/store/state";
+import { observer } from "mobx-react";
 import SidebarMenu from './components/SidebarMenu';
-import WeatherApp from './components/WeatherApp';
+import Main from './components/WeatherApp';
 
-class App extends React.Component{
-  public state = { city: 'Amsterdam' }
-  private apiKey = "883f5d2b38852ab00175a1f529dbdf24";
-
+@observer
+class App extends React.Component{  
   public render() {
     return (
       <>
-        <SidebarMenu test="" />
+        <SidebarMenu />
         <div className="App">
-          <WeatherApp city={this.state.city} apiKey={this.apiKey} />
-          <input type="text" onKeyPress={this.pressingEnter.bind(event)} />
+          <Main />
+          <input type="text" onKeyPress={this.inputHandler.bind(event)} />
         </div>
       </>
     );
   }
 
-  private pressingEnter = (event: KeyboardEvent) => {
+  // Check if enter was pressed
+  private inputHandler = (event: KeyboardEvent) => {
     if (event.key === "Enter") {
-      const text = (event.target as HTMLInputElement).value;
-      this.setState({ city: text });
-      (event.target as HTMLInputElement).value = '';
+      const city = (event.target as HTMLInputElement).value;
+      appState.changeCity(city.charAt(0).toUpperCase() + city.slice(1)); // City to uppercase
+      (event.target as HTMLInputElement).value = ''; // set it back to empty
     }
   }
 }

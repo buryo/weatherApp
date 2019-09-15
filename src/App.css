@@ -1,0 +1,31 @@
+html, body {
+  font-family: 'Bangers', cursive;
+  height: 100%;
+  margin: 0px;
+  background-color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+}
+
+.App {
+  width: 100%;
+}
+
+.side-bar {
+  width: 84px;
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-right: 20px;
+  transition-duration: 250ms;
+  user-select: none;
+}

@@ -1,7 +1,7 @@
 import { appState } from "../state";
 import axios from "axios";
 
-const apiKey = "883f5d2b38852ab00175a1f529dbdf24";
+const apiKey = process.env.REACT_APP_API_KEY;
 
 export async function getApiData() {
   try {
@@ -14,8 +14,7 @@ export async function getApiData() {
         appState.loading = true;
       })
       .catch(err => {
-        appState.error =  err.response.data.message
-        // this.setState({ error:});
+        appState.error =  err.response.data.message;
       });
   } catch (err) {
     throw new Error("Something went wrong...");

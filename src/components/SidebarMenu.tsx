@@ -1,6 +1,7 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { appState } from "../store/state";
+import { Link } from "react-router-dom";
 
 @observer
 export default class SideBar extends React.Component {
@@ -10,7 +11,7 @@ export default class SideBar extends React.Component {
 
   public render() {
     return (
-      <div className="side-bar">
+      <div className="sidebar">
         <select
           name="unit"
           id="unit"
@@ -21,11 +22,26 @@ export default class SideBar extends React.Component {
           <option value="fahrenheit">Fahrenheit | °F</option>
           <option value="kalvin">Kalvin | K</option>
         </select>
+        <ul className="sidebar-links">
+          {this.CreateButton("Home")}
+        </ul>
       </div>
     );
   }
 
-  private handleUnitChange = (
+  public CreateButton = (text: string) => {
+    return (
+      <div className="dropdown-button">
+        <li className="onHover">
+          <div className="dropdown">
+            <Link to="/">{text}</Link>
+          </div>
+        </li>
+      </div>
+    );
+  };
+
+  public handleUnitChange = (
     event: React.FormEvent<HTMLSelectElement>
   ): void => {
     const value = (event.target as HTMLInputElement).value;

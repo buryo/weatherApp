@@ -11,10 +11,10 @@ export async function getApiData() {
       )
       .then(res => {
         appState.calculateTemprature(res.data.main.temp);
-        appState.loading = true;
       })
       .catch(err => {
         appState.error =  err.response.data.message;
+        appState.loading = false;
       });
   } catch (err) {
     throw new Error("Something went wrong...");

@@ -31,7 +31,7 @@ class State {
     public weatherData: IWeatherApiData;
 
     @observable
-    public loading : boolean = false;
+    public loading : boolean = true;
 
     @observable
     public error : string = '';
@@ -75,6 +75,8 @@ class State {
             default:
                 break;
         }
+        this.error = '';
+        appState.loading = false;
     }
 
     @action
